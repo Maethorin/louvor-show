@@ -1,0 +1,65 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+.pre {
+  white-space: pre;
+  font-family: Courier,monospace;
+    font-size: 42px;
+  font-weight: bold;
+    line-height: 13px;
+    margin-left: -300px;
+}
+
+.pre b {
+  color: orange;
+}
+
+.musica {
+  border-radius: 8px;
+  border: inset 1px #DDD;
+  margin: 20px 50px;
+    min-height: 850px;
+    background-color: #EEE;
+}
+
+.titulo {
+    padding-left: 50px;
+    font-size: 50px;
+}
+
+.paginacao {
+    text-align: center;
+}
+
+.base {
+    padding: 10px;
+    background-color: #DADADA;
+}
