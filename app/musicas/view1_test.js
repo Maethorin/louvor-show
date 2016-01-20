@@ -1,8 +1,8 @@
 'use strict';
 
-describe('myApp.musicas module', function() {
+describe('louvorShow.musicas module', function() {
 
-  beforeEach(module('myApp.musicas'));
+  beforeEach(module('louvorShow.musicas'));
 
   describe('musicas controller', function(){
 

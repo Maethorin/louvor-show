@@ -1,10 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
+angular.module('louvorShow', [
   'ngRoute',
-  'myApp.musicas'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/musicas'});
-}]);
+  'louvorShow.musicas'
+]);

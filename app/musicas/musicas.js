@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('myApp.musicas', ['ngRoute'])
-
+angular.module('louvorShow.musicas', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider
           .when('/musicas', {
@@ -15,23 +14,23 @@ angular.module('myApp.musicas', ['ngRoute'])
     }])
 
     .filter('filtraPagina', function() {
-        return function(input, paginaAtual) {
+        return function(input, parte) {
             if (!input) {
                 return false;
             }
-            paginaAtual = +paginaAtual;
+            parte = +parte;
             //console.log(input);
-            return input.slice(paginaAtual);
+            return input.slice(parte);
         }
     })
 
-    .controller('ListaMusicasController', ['$scope', '$http', function($scope, $http) {
-        $http.get('musicas/musicas.json').success(function(data) {
+    .controller('ListaMusicasController', ['$scope', '$http', '$templateCache', function($scope, $http, $templateCache) {
+        $http.get('musicas/musicas.json', {cache: false}).success(function(data) {
             $scope.musicas = data;
         });
     }])
 
-    .controller('ExibeMusicaController', ['$scope', '$routeParams', '$http', '$sce', function($scope, $routeParams, $http, $sce) {
+    .controller('ExibeMusicaController', ['$scope', '$routeParams', '$http', '$sce', '$templateCache', function($scope, $routeParams, $http, $sce, $templateCache) {
         var musicaId = $routeParams.musicaId;
         var parte = parseInt($routeParams.parte);
         if (!parte) {
@@ -46,7 +45,7 @@ angular.module('myApp.musicas', ['ngRoute'])
             for (var i = 0; i < $scope.musicas.length; i++) {
                 var musica = $scope.musicas[i];
                 if (musica.id == musicaId) {
-                    $http.get('musicas/letras/' + musica.template + '.json').success(function(letra) {
+                    $http.get('musicas/letras/' + musica.arquivoLetra + '.json', {cache: false}).success(function(letra) {
                         musica.letra = letra;
                         $scope.musica = musica;
                     });
