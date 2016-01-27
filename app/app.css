@@ -1,52 +1,52 @@
 /* app css stylesheet */
 
 .menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
 }
 
 .menu:before {
-  content: "[";
+    content: "[";
 }
 
 .menu:after {
-  content: "]";
+    content: "]";
 }
 
 .menu > li {
-  display: inline;
+    display: inline;
 }
 
 .menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+    content: "|";
+    padding-right: 0.3em;
 }
 
 .menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+    content: "";
+    padding: 0;
 }
 
 .pre {
-  white-space: pre;
-  font-family: Courier,monospace;
+    white-space: pre;
+    font-family: Courier, monospace;
     font-size: 42px;
-  font-weight: bold;
+    font-weight: bold;
     line-height: 13px;
     margin-left: -300px;
 }
 
 .pre b {
-  color: orange;
+    color: orange;
 }
 
 .musica {
-  border-radius: 8px;
-  border: inset 1px #DDD;
-  margin: 20px 50px;
-    min-height: 527px;
+    border-radius: 8px;
+    border: inset 1px #DDD;
+    margin: 10px 50px;
+    min-height: 545px;
     background-color: #EEE;
 }
 
@@ -62,4 +62,29 @@
 .base {
     padding: 10px;
     background-color: #DADADA;
+}
+
+.animate-enter,
+.animate-leave {
+    -webkit-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+}
+
+.animate-enter {
+    left: 100%;
+}
+
+.animate-enter.animate-enter-active {
+    left: 0;
+}
+
+.animate-leave {
+    left: 0;
+}
+
+.animate-leave.animate-leave-active {
+    left: -100%;
 }
