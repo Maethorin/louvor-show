@@ -1,50 +1,86 @@
 {
   "1": [
+    "Instrumental",
+        "<b>A9</b>         <b>E</b>"
+  ],
+  "2": [
     "<b>A9</b>         <b>E</b>",
     "Meu Jesus, salvador",
     "<b>F#m7</b>   <b>E</b>        <b>D</b>",
-    "Outro igual n�o h�",
+    "Outro igual não há",
     "         <b>A/C#</b>  <b>D</b>        <b>A/E</b>",
     "Todos os dias  quero louvar",
-    "   <b>F#m7</b>       <b>G</b>  <b>D/F#</b>   <b>Esus</b>   <b>E</b>",
-    "As maravilhas de teu amor",
+    "   <b>F#m7</b>       <b>G</b>  <b>D/F#</b>   <b>E4</b>   <b>E</b>",
+    "As maravilhas de teu amor"
+  ],
+  "3": [
+
     "<b>A9</b>       <b>E</b>",
     "Consolo, abrigo",
     "<b>F#m7</b>      <b>E</b>           <b>D</b>",
-    "For�a e ref�gio � o Senhor",
+    "Força e refúgio é o Senhor",
     "               <b>A/C#</b>",
     "Com todo o meu ser",
     "    <b>D</b>          <b>A/E</b>",
     "Com tudo o que sou",
-    "<b>F#m7</b>       <b>G</b>    <b>D/F#</b> <b>Esus</b>   <b>E</b>",
-    "Sempre te ado - ra - rei",
-    "<b>A9</b>        <b>F#m7</b>          <b>D</b>          <b>Esus</b>   <b>E</b>",
+    "<b>F#m7</b>       <b>G</b>    <b>D/F#</b> <b>E4</b>   <b>E</b>",
+    "Sempre te ado - ra - rei"
+  ],
+  "4": [
+
+    "<b>A9</b>        <b>F#m7</b>          <b>D</b>          <b>E4</b>   <b>E</b>",
     "Aclame ao Senhor toda a Terra e cantemos",
-    "  <b>A9</b>        <b>F#m7</b>      <b>D</b>        <b>Esus</b>   <b>E</b>",
+    "  <b>A9</b>        <b>F#m7</b>      <b>D</b>        <b>E4</b>   <b>E</b>",
     "Poder, majestade e louvores ao Rei",
     "   <b>F#m7</b>      <b>F#m7/E</b>     <b>D7M</b>",
     "Montanhas se prostrem e rujam os mares",
     "   <b>E</b>   <b>D/F#</b>   <b>E/G#</b>",
-    "Ao som de teu nome",
-    " <b>A9</b>       <b>F#m7</b>      <b>D</b>            <b>Esus</b>   <b>E</b>",
+    "Ao som de teu nome"
+  ],
+  "5": [
+    " <b>A9</b>       <b>F#m7</b>      <b>D</b>            <b>E4</b>   <b>E</b>",
     "Alegre te louvo por teus grandes feitos",
-    "   <b>A9</b>     <b>F#m7</b>          <b>D</b>    <b>Esus</b>   <b>E</b>",
+    "   <b>A9</b>     <b>F#m7</b>          <b>D</b>    <b>E4</b>   <b>E</b>",
     "Firmado estarei, sempre te amarei",
     "<b>F#m7</b>   <b>F#m7/E</b>     <b>D7M</b>     <b>D/E</b>        <b>A9</b>",
-    "Incompar�veis s�o tuas promessas pr� mim",
-    "<b>B9</b>          <b>G#m7</b>        <b>E</b>          <b>F#sus</b>   <b>F#</b>",
+    "Incomparáveis são tuas promessas pra mim"
+  ],
+  "6": [
+    " <b>A9</b>       <b>F#m7</b>      <b>D</b>            <b>E4</b>   <b>E</b>",
+    "Alegre te louvo por teus grandes feitos",
+    "   <b>A9</b>     <b>F#m7</b>          <b>D</b>    <b>E4</b>   <b>E</b>",
+    "Firmado estarei, sempre te amarei",
+    "<b>F#m7</b>   <b>F#m7/E</b>     <b>D7M</b>     <b>D/E</b>        <b>A9</b>",
+    "Incomparáveis são tuas promessas"
+  ],
+  "7": [
+    "<b>B9</b>          <b>G#m7</b>        <b>E</b>          <b>F#4</b>   <b>F#</b>",
     "Aclame ao Senhor toda a Terra e cantemos",
-    "<b>B9</b>          <b>G#m7</b>      <b>E</b>        <b>F#sus</b>   <b>F#</b>",
+    "<b>B9</b>          <b>G#m7</b>      <b>E</b>        <b>F#4</b>   <b>F#</b>",
     "Poder, majestade e louvores ao Rei",
     "   <b>G#m7</b>      <b>G#m7/F#</b>    <b>E7M</b>",
     "Montanhas se prostrem e rujam os mares",
     "   <b>F#</b>  <b>E/G#</b>   <b>F#/A#</b>",
-    "Ao som de teu nome",
-    " <b>B9</b>       <b>G#m7</b>      <b>E</b>            <b>F#sus</b>   <b>F#</b>",
+    "Ao som de teu nome"
+  ],
+  "8": [
+    " <b>B9</b>       <b>G#m7</b>      <b>E</b>            <b>F#4</b>   <b>F#</b>",
     "Alegre te louvo por teus grandes feitos",
-    "   <b>B9</b>       <b>G#m7</b>        <b>E</b>     <b>F#sus</b>   <b>F#</b>",
+    "   <b>B9</b>       <b>G#m7</b>        <b>E</b>     <b>F#4</b>   <b>F#</b>",
     "Firmado estarei, sempre te amarei",
     "<b>G#m7</b>   <b>G#m7/F#</b>    <b>E7M</b>     <b>E/F#</b>       <b>B9</b>",
-    "Incompar�veis s�o tuas promessas pra mim"
+    "Incomparáveis são tuas promessas"
+  ],
+  "9": [
+    "<b>G#m7</b>   <b>G#m7/F#</b>    <b>E7M</b>     <b>E/F#</b>       <b>B9</b>",
+    "Incomparáveis são tuas promessas",
+    "<b>G#m7</b>   <b>G#m7/F#</b>    <b>E7M</b>     <b>E/F#</b>       <b>B9</b>",
+    "Incomparáveis são tuas promessas",
+    "<b>G#m7</b>   <b>G#m7/F#</b>    <b>E7M</b>     <b>E/F#</b>       <b>B9</b>",
+    "Incomparáveis são tuas promessas",
+    "<b>G#m7</b>   <b>G#m7/F#</b>    <b>E7M</b>     <b>E/F#</b>       <b>B9</b>",
+    "Incomparáveis são tuas promessas",
+    "<b>G#m7</b>   <b>G#m7/F#</b>    <b>E7M</b>     <b>E/F#</b>       <b>B9</b>",
+    "Incomparáveis são tuas promessas pra mim"
   ]
 }
