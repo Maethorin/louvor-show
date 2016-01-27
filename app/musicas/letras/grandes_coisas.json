@@ -1,43 +1,49 @@
 {
   "1": [
-    "<b>Am7</b>  <b>G</b>  <b>F</b>",
-    "<b>Am7</b>  <b>G</b>  <b>F</b>",
-
+   "Introdu√ß√£o:", "<b>Am7</b>  <b>G</b>  <b>F</b>",
+    "<b>Am7</b>  <b>G</b>  <b>F</b>"
+],
+  "2":[
     "                    <b>Am7</b>",
-    "Tu Ès o Deus dessa terra",
+    "Tu √©s o Deus dessa terra",
     "                 <b>G</b>",
-    "Tu Ès Rei desse povo",
+    "Tu √©s Rei desse povo",
     "                  <b>F9</b>     <b>Dm7</b>",
-    "…s o Senhor da naÁ„o, Tu Ès",
+    "√âs o Senhor da na√ß√£o, Tu √©s"
+    ],
+  "3":[
     "                   <b>Am7</b>",
-    "Tu Ès a luz desse mundo",
+    "Tu √©s a luz desse mundo",
     "                      <b>G</b>",
-    "EsperanÁa para os perdidos",
+    "Esperan√ßa para os perdidos",
     "                       <b>F9</b>       <b>Dm7</b>",
-    "Tu Ès a paz pra os cansados, Tu Ès",
+    "Tu √©s a paz pra os cansados, Tu √©s"
+   ],
+  "4":[
     "     <b>C9</b>    <b>G</b>    <b>F9</b>",
-    "NinguÈm È como nosso Deus",
+    "Ningu√©m √© como nosso Deus",
     "     <b>Am7</b>   <b>G</b>    <b>F9</b>       <b>G</b>",
-    "NinguÈm È como nosso De__eus",
+    "Ningu√©m √© como nosso De__eus"
+    ],
+  "5":[
     "  <b>F9</b>",
-    "Grandes coisas est„o por vir",
-    "  <b>G</b>                                   <b>C9</b>  <b>G/B</b>  <b>F9</b>",
-    "Grandes coisas v„o acontecer nesse luga___________r",
-    "Grandes coisas est„o por vir",
-    "  <b>G</b>                                   <b>C9</b>  <b>G/B</b>  <b>F9</b>",
-    "Grandes coisas v„o acontecer nesse luga___________r",
+    "Grandes coisas est√£o por vir",
+    "  <b>G</b>       " ,
+    "Grandes coisas v√£o acontecer",
+     "        <b>C9</b>  <b>G/B</b>  <b>F9</b>",
+    "nesse luga___________r"
+  ] ,
+  "6":[
     "  <b>F9</b>",
-    "Grandes coisas est„o por vir",
-    "  <b>G</b>                                  <b>C9</b>  <b>G</b>  <b>F9</b>",
-    "Grandes coisas v„o acontecer nesse lugar",
-    "  <b>F9</b>",
-    "Grandes coisas est„o por vir",
-    "  <b>G</b>                             <b>C9</b>",
-    "Grandes coisas v„o acontecer aqui",
+    "Grandes coisas est√£o por vir",
+    "  <b>G</b>                            <b>C9</b>  ",
+    "Grandes coisas v√£o acontecer aqui"
 
-    "<b>C9</b>  <b>F9</b>  <b>C9</b>  <b>F9</b>",
+  ],
+ "7":[
+  "Instrumental:","<b>C9</b>  <b>F9</b>  <b>C9</b>  <b>F9</b>",
     "<b>Am7</b>  <b>F9</b>",
 
-    "<b>C9</b>  <b>F9</b>  <b>C9</b>  <b>F9</b> <b>C9</b>"
+    "Solo:","<b>C9</b>  <b>F9</b>  <b>C9</b>  <b>F9</b> <b>C9</b>"
   ]
 }
