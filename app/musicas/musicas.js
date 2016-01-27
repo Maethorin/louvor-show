@@ -47,6 +47,7 @@ angular.module('louvorShow.musicas', ['ngRoute'])
                 if (musica.id == musicaId) {
                     $http.get('musicas/letras/' + musica.arquivoLetra + '.json', {cache: false}).success(function(letra) {
                         musica.letra = letra;
+                        musica.zas = "buh";
                         $scope.musica = musica;
                     });
                     break;
