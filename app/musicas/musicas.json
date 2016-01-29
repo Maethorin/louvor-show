@@ -1,12 +1,12 @@
 [
-    {"id": 1, "nome": "Alegrei-me", "arquivoLetra": "alegrei_me"},
-    {"id": 2, "nome": "Celebrai a Cristo, Celebrai", "arquivoLetra": "celebrai_a_cristo_celebrai", "sequencia":[1, 1, 1, 3, 4, 4, 2, 2]},
-    {"id": 3, "nome": "O Poder da Fé", "arquivoLetra": "o_poder_da_fe"},
-    {"id": 4, "nome": "Oh, Trazei à Casa do Teseouro!", "arquivoLetra": "oh_trazei_a_casa_do_tesouro"},
-    {"id": 5, "nome": "Poder do Teu Amor", "arquivoLetra": "o_poder_do_teu_amor"},
-    {"id": 6, "nome": "Aclame ao Senhor", "arquivoLetra": "aclame_ao_senhor", "sequencia":[1, 2, 3, 4, 5, 1, 2, 3, 4, 6, 4, 8, 7, 8, 9]},
-    {"id": 7, "nome": "Há uma unção", "arquivoLetra": "ha_uma_uncao", "sequencia":[1, 2, 2, 3, 4, 5, 2, 2, 3, 4, 5 ]},
-    {"id": 8, "nome": "Te adorar", "arquivoLetra":"te_adorar", "sequencia":[1, 2, 3, 4, 5, 6,  2, 3, 4, 5, 6]},
-     {"id": 9, "nome": "Grandes Coisas", "arquivoLetra":"grandes_coisas", "sequencia":[1, 2, 3, 4, 5, 5, 2, 3, 4, 5,5,5,6,7,4,4,5,5,5,6]}
+    {"id": 1, "nome": "Alegrei-me", "cantor":"Igreja Batista Nova Jerusalém", "arquivoLetra": "alegrei_me"},
+    {"id": 2, "nome": "Celebrai a Cristo, Celebrai", "cantor":"Ministério Koinonya de Louvor","arquivoLetra": "celebrai_a_cristo_celebrai", "sequencia":[1, 1, 1, 3, 4, 4, 2, 2]},
+    {"id": 3, "nome": "O Poder da Fé","cantor":"Ministério Sarando a Terra Ferida", "arquivoLetra": "o_poder_da_fe"},
+    {"id": 4, "nome": "Oh, Trazei à Casa do Teseouro!","cantor":"H.C.C 244", "arquivoLetra": "oh_trazei_a_casa_do_tesouro"},
+    {"id": 5, "nome": "Poder do Teu Amor","cantor":"Diante do Trono", "arquivoLetra": "o_poder_do_teu_amor"},
+    {"id": 6, "nome": "Aclame ao Senhor","cantor":"Diante do Trono", "arquivoLetra": "aclame_ao_senhor", "sequencia":[1, 2, 3, 4, 5, 1, 2, 3, 4, 6, 4, 8, 7, 8, 9]},
+    {"id": 7, "nome": "Há uma unção","cantor":"Kleber Lucas", "arquivoLetra": "ha_uma_uncao", "sequencia":[1, 2, 2, 3, 4, 5, 2, 2, 3, 4, 5 ]},
+    {"id": 8, "nome": "Te adorar","cantor":"Fernandinho", "arquivoLetra":"te_adorar", "sequencia":[1, 2, 3, 4, 5, 6,  2, 3, 4, 5, 6]},
+    {"id": 9, "nome": "Grandes Coisas","cantor":"Fernandinho", "arquivoLetra":"grandes_coisas", "sequencia":[1, 2, 3, 4, 5, 5, 2, 3, 4, 5,5,5,6,7,4,4,5,5,5,6]}
 
 ]

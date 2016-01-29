@@ -1,5 +1,44 @@
-<ul>
-    <li ng-repeat="musica in musicas">
-        <a ng-href="#/musicas/{{musica.id}}/0">{{musica.nome}}</a>
-    </li>
-</ul>
+<head>
+     <!--<link rel="stylesheet" href="musica.css">-->
+     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+ </head>
+
+<div class="container" style="padding: 10px; margin-left: 540px">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="search" ng-model="buscar" class="form-control" placeholder="Buscar Música ou Cantor" >
+         </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+    <div class="col-md-7">
+    <table class="table table-striped table-bordered " style="margin-left: 250px">
+        <thead>
+       <tr>
+           <th>Musicas</th>
+           <th>Cantor</th>
+       </tr>
+        </thead>
+        <tbody ng-repeat="musica in musicas |filter:buscar" >
+            <tr>
+              <td>
+                <a ng-href="#/musicas/{{musica.id}}">{{musica.nome}}</a>
+              </td>
+
+                <td>
+                 {{musica.cantor}}
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+   </div>
+  </div>
+</div>
+<!--<ul>-->
+    <!--<li ng-repeat="musica in musicas |filter:buscar">-->
+        <!--<a ng-href="#/musicas/{{musica.id}}/0">{{musica.nome}}</a>-->
+    <!--</li>-->
+<!--</ul>-->
