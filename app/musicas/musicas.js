@@ -7,7 +7,7 @@ angular.module('louvorShow.musicas', ['ngRoute'])
             templateUrl: 'musicas/musicas.html',
             controller: 'ListaMusicasController'
           })
-          .when('/musicas/:musicaId/:parte', {
+          .when('/musicas/:musicaId', {
             templateUrl: 'musicas/musica.html',
             controller: 'ExibeMusicaController'
           });
@@ -30,14 +30,15 @@ angular.module('louvorShow.musicas', ['ngRoute'])
         });
     }])
 
-    .controller('ExibeMusicaController', ['$scope', '$routeParams', '$http', '$sce', '$templateCache', function($scope, $routeParams, $http, $sce, $templateCache) {
+    .controller('ExibeMusicaController', ['$scope', '$routeParams', '$http', '$sce', '$timeout', '$location', function($scope, $routeParams, $http, $sce, $timeout, $location) {
         var musicaId = $routeParams.musicaId;
-        var parte = parseInt($routeParams.parte);
-        if (!parte) {
-            parte = 0;
-        }
+        //var parte = 1;// parseInt($routeParams.parte);
+        //if (!parte) {
+        //    parte = 0;
+        //}
         $scope.musicas = null;
-        $scope.parte = parte;
+        $scope.parte = 1;
+        $scope.exibir = true;
         $scope.trataHtml = function(linha) {
             return $sce.trustAsHtml(linha);
         };
@@ -54,18 +55,27 @@ angular.module('louvorShow.musicas', ['ngRoute'])
                 }
             }
         };
-        //if (!$scope.musica) {
-        //    if (!$scope.musicas) {
-                $http.get('musicas/musicas.json').success(function(listaMusicas) {
-                    $scope.musicas = listaMusicas;
-                    achaMusica();
-                });
-            //}
-            //else {
-            //    achaMusica();
-            //}
-        //}
-        //else {
-        //    $scope.musica.strofe = $sce.trustAsHtml($scope.musica.letra[parte]);
-        //}
+        $http.get('musicas/musicas.json').success(function(listaMusicas) {
+            $scope.musicas = listaMusicas;
+            achaMusica();
+        });
+        //$scope.paginar = function(direcao) {
+        //    $scope.exibir = false;
+        //    $timeout(function() {
+        //        $scope.parte += +direcao;
+        //        $scope.exibir = true;
+        //        //$location.path("/musicas/" + musicaId + "/" + $scope.parte);
+        //    }, 200);
+        //};
+        $scope.obterParte = function() {
+            return $scope.musica.letra[$scope.musica.sequencia[$scope.parte - 1]]
+        };
+        $scope.$watch('parte', function() {
+            $scope.exibir = false;
+            $timeout(function() {
+                //$scope.parte += +direcao;
+                $scope.exibir = true;
+                //$location.path("/musicas/" + musicaId + "/" + $scope.parte);
+            }, 100);
+        });
     }]);
