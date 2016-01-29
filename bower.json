@@ -5,12 +5,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "~1.4.0",
-    "angular-route": "~1.4.0",
-    "angular-loader": "~1.4.0",
-    "angular-mocks": "~1.4.0",
-    "html5-boilerplate": "~5.2.0",
-    "bootstrap": "~3.3.6",
-    "fontawesome": "~4.5.0"
+    "angular": null,
+    "angular-route": null,
+    "angular-loader": null,
+    "angular-animate": null,
+    "angular-mocks": null,
+    "bootstrap": null,
+    "fontawesome": null
   }
 }
