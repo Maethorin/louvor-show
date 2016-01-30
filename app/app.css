@@ -35,7 +35,7 @@
     font-size: 42px;
     font-weight: bold;
     line-height: 13px;
-    margin-left: -300px;
+    margin-left: -500px;
 }
 
 .pre b {
@@ -51,8 +51,12 @@
 }
 
 .titulo {
-    padding-left: 50px;
-    font-size: 50px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.campo-parte {
+    padding-top: 5px;
 }
 
 .paginacao {
@@ -74,6 +78,6 @@
   opacity:0;
 }
 
-/*.musica.ng-hide {*/
-    /*background-color: #AAA;*/
-/*}*/
+.musica.ng-hide {
+    background-color: #AAA;
+}
