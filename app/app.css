@@ -35,7 +35,7 @@
     font-size: 42px;
     font-weight: bold;
     line-height: 13px;
-    margin-left: -300px;
+    margin-left: -500px;
 }
 
 .pre b {
@@ -45,25 +45,24 @@
 .musica {
     border-radius: 8px;
     border: inset 1px #DDD;
-    margin: 10px 50px;
+    margin-top: 10px;
     min-height: 545px;
     background-color: #EEE;
 }
 
 .titulo {
-    padding-left: 50px;
-    font-size: 50px;
+    font-size: 40px;
+    font-weight: bold;
 }
 
-.paginacao {
-    text-align: center;
+.campo-parte {
+    padding-top: 5px;
 }
 
 .base {
     padding: 10px;
     background-color: #DADADA;
 }
-
 
 .pre, .musica {
   -webkit-transition:all linear 0.2s;
@@ -74,6 +73,6 @@
   opacity:0;
 }
 
-/*.musica.ng-hide {*/
-    /*background-color: #AAA;*/
-/*}*/
+.musica.ng-hide {
+    background-color: #AAA;
+}

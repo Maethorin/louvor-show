@@ -32,10 +32,6 @@ angular.module('louvorShow.musicas',['ngRoute'])
 
     .controller('ExibeMusicaController', ['$scope', '$routeParams', '$http', '$sce', '$timeout', '$location', function($scope, $routeParams, $http, $sce, $timeout, $location) {
         var musicaId = $routeParams.musicaId;
-        //var parte = 1;// parseInt($routeParams.parte);
-        //if (!parte) {
-        //    parte = 0;
-        //}
         $scope.musicas = null;
         $scope.parte = 1;
         $scope.exibir = true;
@@ -48,7 +44,6 @@ angular.module('louvorShow.musicas',['ngRoute'])
                 if (musica.id == musicaId) {
                     $http.get('musicas/letras/' + musica.arquivoLetra + '.json', {cache: false}).success(function(letra) {
                         musica.letra = letra;
-                        musica.zas = "buh";
                         $scope.musica = musica;
                     });
                     break;
@@ -61,23 +56,11 @@ angular.module('louvorShow.musicas',['ngRoute'])
             $scope.musicas = listaMusicas;
             achaMusica();
         });
-        //$scope.paginar = function(direcao) {
-        //    $scope.exibir = false;
-        //    $timeout(function() {
-        //        $scope.parte += +direcao;
-        //        $scope.exibir = true;
-        //        //$location.path("/musicas/" + musicaId + "/" + $scope.parte);
-        //    }, 200);
-        //};
-        $scope.obterParte = function() {
-            return $scope.musica.letra[$scope.musica.sequencia[$scope.parte - 1]]
-        };
-        $scope.$watch('parte', function() {
+        $scope.paginar = function(direcao) {
             $scope.exibir = false;
             $timeout(function() {
-                //$scope.parte += +direcao;
+                $scope.parte += +direcao;
                 $scope.exibir = true;
-                //$location.path("/musicas/" + musicaId + "/" + $scope.parte);
-            }, 100);
-        });
+            }, 200);
+        };
     }]);
