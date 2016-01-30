@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('louvorShow.musicas', ['ngRoute'])
+angular.module('louvorShow.musicas',['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider
           .when('/musicas', {
@@ -55,6 +55,8 @@ angular.module('louvorShow.musicas', ['ngRoute'])
                 }
             }
         };
+
+
         $http.get('musicas/musicas.json').success(function(listaMusicas) {
             $scope.musicas = listaMusicas;
             achaMusica();

@@ -20,7 +20,7 @@
            <th>Cantor</th>
        </tr>
         </thead>
-        <tbody ng-repeat="musica in musicas |filter:buscar" >
+        <tbody ng-repeat="musica in musicas|filter:buscar|orderBy:'+ nome'| limitTo:10" >
             <tr>
               <td>
                 <a ng-href="#/musicas/{{musica.id}}">{{musica.nome}}</a>
@@ -30,10 +30,16 @@
                  {{musica.cantor}}
                 </td>
             </tr>
-
         </tbody>
 
     </table>
+
+  <nav style="margin-left:450px">
+      <ul class="pager">
+        <li><a href="#/musicas/{{musica.id}}">Anterior</a></li>
+        <li><a href="#/musicas/{{musica.id}}">Próximo</a></li>
+  </ul>
+ </nav>
    </div>
   </div>
 </div>
