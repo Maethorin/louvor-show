@@ -4,11 +4,11 @@ angular.module('louvorShow.musicas',['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider
           .when('/musicas', {
-            templateUrl: 'musicas/musicas.html',
+            templateUrl: '/angular/musicas.html',
             controller: 'ListaMusicasController'
           })
           .when('/musicas/:musicaId', {
-            templateUrl: 'musicas/musica.html',
+            templateUrl: '/angular/musica.html',
             controller: 'ExibeMusicaController'
           });
     }])
@@ -25,7 +25,7 @@ angular.module('louvorShow.musicas',['ngRoute'])
     })
 
     .controller('ListaMusicasController', ['$scope', '$http', '$templateCache', function($scope, $http, $templateCache) {
-        $http.get('musicas/musicas.json', {cache: false}).success(function(data) {
+        $http.get('/json/musicas.json', {cache: false}).success(function(data) {
             $scope.musicas = data;
         });
     }])
@@ -42,7 +42,7 @@ angular.module('louvorShow.musicas',['ngRoute'])
             for (var i = 0; i < $scope.musicas.length; i++) {
                 var musica = $scope.musicas[i];
                 if (musica.id == musicaId) {
-                    $http.get('musicas/letras/' + musica.arquivoLetra + '.json', {cache: false}).success(function(letra) {
+                    $http.get('/json/' + musica.arquivoLetra + '.json', {cache: false}).success(function(letra) {
                         musica.letra = letra;
                         $scope.musica = musica;
                     });
@@ -52,7 +52,7 @@ angular.module('louvorShow.musicas',['ngRoute'])
         };
 
 
-        $http.get('musicas/musicas.json').success(function(listaMusicas) {
+        $http.get('/json/musicas.json').success(function(listaMusicas) {
             $scope.musicas = listaMusicas;
             achaMusica();
         });
