@@ -1,9 +1,12 @@
 <div class="container-fluid base">
     <div class="row">
-        <div class="col-md-5 titulo">
+        <div class="col-md-4 titulo">
             {{musica.nome}}
         </div>
-        <div class="col-md-7 form-inline campo-parte">
+        <div class="col-md-4 titulo">
+            {{musica.cantor}}
+        </div>
+        <div class="col-md-4 form-inline campo-parte">
             <div class="input-group input-group-lg">
               <span class="input-group-btn" ng-if="parte > 1">
                     <button type="button" ng-click="paginar(-1)" class="btn btn-lg btn-default"><span aria-hidden="true">&laquo;</span></button>

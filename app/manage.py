@@ -4,15 +4,20 @@ import os
 
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
+import sys
 
-from app import app, db
+from initialize import web_app
 
-app.config.from_object(os.environ['APP_SETTINGS'])
+manager = Manager(web_app)
 
-migrate = Migrate(app, db)
-manager = Manager(app)
 
-manager.add_command('db', MigrateCommand)
+def register_migrate(manager):
+    from models import db, Cantor, Musica, Estrofe, Verso
+    migrate = Migrate(web_app, db)
+    manager.add_command('db', MigrateCommand)
+    return migrate
 
 if __name__ == '__main__':
+    if 'db' in sys.argv:
+        migrate = register_migrate(manager)
     manager.run()

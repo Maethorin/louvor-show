@@ -19,43 +19,44 @@ angular.module('louvorShow.musicas',['ngRoute'])
                 return false;
             }
             parte = +parte;
-            //console.log(input);
             return input.slice(parte);
         }
     })
 
-    .controller('ListaMusicasController', ['$scope', '$http', '$templateCache', function($scope, $http, $templateCache) {
-        $http.get('/json/musicas.json', {cache: false}).success(function(data) {
+    .controller('ListaMusicasController', ['$scope', '$http', '$templateCache', function($scope, $http) {
+        $http.get('/api/musicas', {cache: false}).success(function(data) {
             $scope.musicas = data;
         });
     }])
 
     .controller('ExibeMusicaController', ['$scope', '$routeParams', '$http', '$sce', '$timeout', '$location', function($scope, $routeParams, $http, $sce, $timeout, $location) {
         var musicaId = $routeParams.musicaId;
-        $scope.musicas = null;
         $scope.parte = 1;
         $scope.exibir = true;
         $scope.trataHtml = function(linha) {
             return $sce.trustAsHtml(linha);
         };
-        var achaMusica = function() {
-            for (var i = 0; i < $scope.musicas.length; i++) {
-                var musica = $scope.musicas[i];
-                if (musica.id == musicaId) {
-                    $http.get('/json/' + musica.arquivoLetra + '.json', {cache: false}).success(function(letra) {
-                        musica.letra = letra;
-                        $scope.musica = musica;
-                    });
-                    break;
-                }
-            }
-        };
-
-
-        $http.get('/json/musicas.json').success(function(listaMusicas) {
-            $scope.musicas = listaMusicas;
-            achaMusica();
+        $http.get('/api/musicas/' + musicaId, {cache: false}).success(function(musica) {
+            $scope.musica = musica;
         });
+        //var achaMusica = function() {
+        //    for (var i = 0; i < $scope.musicas.length; i++) {
+        //        var musica = $scope.musicas[i];
+        //        if (musica.id == musicaId) {
+        //            $http.get('/api/musicas/' + musica.arquivoLetra + '.json', {cache: false}).success(function(letra) {
+        //                musica.letra = letra;
+        //                $scope.musica = musica;
+        //            });
+        //            break;
+        //        }
+        //    }
+        //};
+
+
+        //$http.get('/api/musicas').success(function(listaMusicas) {
+        //    $scope.musicas = listaMusicas;
+        //    achaMusica();
+        //});
         $scope.paginar = function(direcao) {
             $scope.exibir = false;
             $timeout(function() {
