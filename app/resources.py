@@ -1,7 +1,31 @@
 # -*- coding: utf-8 -*-
 
+import requests
+
+from flask import request
 from flask_restful import Resource
+from lxml import html as lhtml
+
 import models
+
+
+class ParserMusica(Resource):
+    def put(self):
+        url = ''
+        if 'url' in request.args:
+            url = request.args['url']
+        if 'url' in request.form:
+            url = request.form['url']
+        try:
+            request_json = request.get_json()
+            if 'url' in request_json:
+                url = request_json['url']
+        except:
+            pass
+        resposta = requests.get(url)
+        pagina = lhtml.fromstring(resposta.content)
+        pre = pagina.cssselect('pre')
+        return lhtml.tostring(pre[0]).replace('<pre>', '').replace('</pre>', '').split('\n')
 
 
 class Musicas(Resource):

@@ -2,3 +2,7 @@ Flask-RESTful
 Flask-SQLAlchemy
 alembic
 Flask-Migrate
+
+requests
+lxml
+cssselect

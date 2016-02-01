@@ -4,5 +4,6 @@
 angular.module('louvorShow', [
   'ngRoute',
   'ngAnimate',
+  'louvorShow.montaMusica',
   'louvorShow.musicas'
 ]);
