@@ -40,17 +40,7 @@ class EditorMusica(Resource):
 
     def post(self):
         musica_dict = request.get_json()
-        cantor = models.Cantor.query.filter_by(nome=musica_dict['cantor']).first()
-        if not cantor:
-            cantor = models.Cantor(nome=musica_dict['cantor'])
-            models.db.session.add(cantor)
-        musica = models.Musica(
-            nome=musica_dict['nome'],
-            sequencia=musica_dict['sequencia'],
-            cantor=cantor
-        )
-        models.db.session.add(musica)
-        models.db.session.commit()
+        models.Musica.cria_musica(musica_dict)
         return {}
 
     def put(self):
