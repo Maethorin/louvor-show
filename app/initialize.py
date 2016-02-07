@@ -29,5 +29,10 @@ def angular_json(json_name):
     return web_app.send_static_file("musicas/json/{}".format(json_name))
 
 
+@web_app.route('/favicon.ico', methods=['GET'])
+def favicon():
+    return web_app.send_static_file("img/favicon.ico")
+
+
 def run():
     web_app.run(debug=True)

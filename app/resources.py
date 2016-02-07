@@ -25,7 +25,7 @@ class ParserMusica(Resource):
         resposta = requests.get(url)
         pagina = lhtml.fromstring(resposta.content)
         pre = pagina.cssselect('pre')
-        return lhtml.tostring(pre[0]).replace('<pre>', '').replace('</pre>', '').split('\n')
+        return lhtml.tostring(pre[0], encoding='UTF-8').replace('<pre>', '').replace('</pre>', '').split('\n')
 
 
 class Musicas(Resource):

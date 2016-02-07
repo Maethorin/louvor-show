@@ -1,5 +1,8 @@
 /* app css stylesheet */
 
+.row {
+    margin-bottom: 10px;
+}
 .menu {
     list-style: none;
     border-bottom: 0.1em solid black;
@@ -75,4 +78,43 @@
 
 .musica.ng-hide {
     background-color: #AAA;
+}
+
+
+.animate-repeat {
+  line-height:30px;
+  list-style:none;
+  box-sizing:border-box;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+  transition:all linear 0.3s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+  opacity:0;
+  max-height:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity:1;
+  max-height:30px;
+}
+
+.linha-bruta a {
+    cursor: pointer;
+}
+
+.cifra {
+    background-color: #ffe87c;
+}
+
+.letra {
+    background-color: #5cb85c;
 }
