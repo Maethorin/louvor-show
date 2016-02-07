@@ -35,17 +35,18 @@ class ParserMusica(Resource):
 
 
 class EditorMusica(Resource):
-    def get(self):
-        return {}
+    def get(self, musica_id):
+        return models.Musica.query.get(musica_id).formato_editor()
 
     def post(self):
         musica_dict = request.get_json()
         models.Musica.cria_musica(musica_dict)
-        return {}
+        return {'resultado': 'OK'}
 
     def put(self):
-        musica = request.get_json()
-        return {}
+        musica_dict = request.get_json()
+        models.Musica.edita_musica(musica_dict)
+        return {'resultado': 'OK'}
 
 
 class Musicas(Resource):

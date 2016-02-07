@@ -36,7 +36,7 @@ class Musica(db.Model):
     cantor_id = db.Column(db.Integer, db.ForeignKey('cantores.id'))
     cantor = relationship("Cantor", back_populates="musicas")
     sequencia = db.Column(db.String())
-    estrofes = relationship("Estrofe", back_populates="musica")
+    estrofes = relationship("Estrofe", back_populates="musica", cascade="save-update, merge, delete")
 
     @classmethod
     def cria_musica(cls, musica_dict):
@@ -47,6 +47,21 @@ class Musica(db.Model):
             cantor=cantor
         )
         db.session.add(musica)
+        for estrofe_dict in musica_dict['estrofes']:
+            musica.adiciona_estrofe(estrofe_dict)
+        db.session.commit()
+
+    @classmethod
+    def edita_musica(cls, musica_dict):
+        musica = cls.query.get(musica_dict['id'])
+        musica.cantor = None
+        for estrofe in musica.estrofes:
+            db.session.delete(estrofe)
+        musica.estrofes = []
+        db.session.commit()
+        musica.nome = musica_dict['nome']
+        musica.sequencia = musica_dict['sequencia']
+        musica.cantor = Cantor.cria_ou_obtem(nome=musica_dict['cantor'])
         for estrofe_dict in musica_dict['estrofes']:
             musica.adiciona_estrofe(estrofe_dict)
         db.session.commit()
@@ -72,6 +87,15 @@ class Musica(db.Model):
                 as_dict['letra'][estrofe.indice] = versos
         return as_dict
 
+    def formato_editor(self):
+        return {
+            'id': self.id,
+            'nome': self.nome,
+            'cantor': self.cantor.nome,
+            'sequencia': self.sequencia,
+            'estrofes': [estrofe.formato_editor() for estrofe in self.estrofes]
+        }
+
 
 class Estrofe(db.Model):
     __tablename__ = 'estrofes'
@@ -79,11 +103,17 @@ class Estrofe(db.Model):
     indice = db.Column(db.Integer)
     musica_id = db.Column(db.Integer, db.ForeignKey('musicas.id'))
     musica = relationship("Musica", back_populates="estrofes")
-    versos = relationship("Verso", back_populates="estrofe")
+    versos = relationship("Verso", back_populates="estrofe", cascade="save-update, merge, delete")
 
     def adiciona_verso(self, ordem, verso_dict):
         verso = Verso(ordem=ordem, letra=verso_dict['letra'], cifra=verso_dict['cifra'], estrofe=self)
         db.session.add(verso)
+
+    def formato_editor(self):
+        return {
+            'indice': self.indice,
+            'versos': [verso.formato_editor() for verso in self.versos]
+        }
 
 
 class Verso(db.Model):
@@ -94,3 +124,9 @@ class Verso(db.Model):
     estrofe = relationship("Estrofe", back_populates="versos")
     cifra = db.Column(db.String())
     letra = db.Column(db.String())
+
+    def formato_editor(self):
+        return {
+            'cifra': self.cifra,
+            'letra': self.letra
+        }

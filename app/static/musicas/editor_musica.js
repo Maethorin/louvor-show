@@ -3,23 +3,33 @@
 angular.module('louvorShow.adicionaMusica', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
-            .when('/editor-musica', {
+            .when('/editor-musica/:musicaId?', {
                 templateUrl: '/angular/editor_musica.html',
                 controller: 'AdicionaMusicaController'
             });
     }])
-    .controller('AdicionaMusicaController', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
+    .controller('AdicionaMusicaController', ['$scope', '$http', '$sce', '$routeParams', function($scope, $http, $sce, $routeParams) {
         $scope.trataHtml = function(linha) {
             return $sce.trustAsHtml(linha);
         };
-        $scope.musica = {
-            "nome": null,
-            "cantor": null,
-            "sequencia": "",
-            "estrofes": [
-                {"indice": 1, versos: [{"cifra": null, "letra": null}]}
-            ]
-        };
+        var musicaId = $routeParams.musicaId;
+        if (musicaId) {
+            $http.get('/api/editor-musica/' + musicaId, {cache: false}).success(function(musica) {
+                $scope.musica = musica;
+                console.log(musica);
+            });
+        }
+        else {
+            $scope.musica = {
+                "id": null,
+                "nome": null,
+                "cantor": null,
+                "sequencia": "1",
+                "estrofes": [
+                    {"indice": 1, versos: [{"cifra": null, "letra": null}]}
+                ]
+            };
+        }
         $scope.letra = [];
         $scope.estrofeAtual = 0;
         $scope.estadoGetMusica = "Carregar";
@@ -31,7 +41,7 @@ angular.module('louvorShow.adicionaMusica', ['ngRoute'])
 
         $scope.parsearMusica = function() {
             $scope.estadoGetMusica = "Aguarde";
-            $http.put('/api/editor-musica', {'url': $scope.cifraUrl}).then(
+            $http.put('/api/letra-musica', {'url': $scope.cifraUrl}).then(
                 function(response) {
                     $scope.musica.nome = response.data.nome;
                     $scope.musica.cantor = response.data.cantor;
@@ -47,7 +57,8 @@ angular.module('louvorShow.adicionaMusica', ['ngRoute'])
         };
 
         $scope.gravarMusica = function() {
-            $http.post('/api/editor-musica', $scope.musica).then(
+            var metodo = $scope.musica.id ? 'put' : 'post';
+            $http[metodo]('/api/editor-musica', $scope.musica).then(
                 function(response) {
                     alert("FOI");
                 },

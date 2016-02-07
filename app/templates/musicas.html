@@ -13,6 +13,7 @@
        <tr>
            <th>Musicas</th>
            <th>Cantor</th>
+           <th>Cantor</th>
        </tr>
         </thead>
         <tbody ng-repeat="musica in musicas|filter:buscar|orderBy:'+ nome'| limitTo:10" >
@@ -24,6 +25,9 @@
                 <td>
                  {{musica.cantor}}
                 </td>
+              <td>
+                <a ng-href="#/editor-musica/{{musica.id}}">editar</a>
+              </td>
             </tr>
         </tbody>
 
