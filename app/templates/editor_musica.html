@@ -1,7 +1,10 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-9">
             <h1>Montar música</h1>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-success" ng-click="gravarMusica()">Gravar</button>
         </div>
     </div>
     <div class="row">
@@ -9,36 +12,44 @@
             <div class="input-group">
                 <input type="text" class="form-control" ng-model="cifraUrl" placeholder="Url da música no Cifra Club"/>
                 <span class="input-group-btn">
-                    <button type="button" ng-click="parsearMusica()" ng-disabled="estadoGetMusica == 'Aguarde'" class="btn btn-default" ng-bind="estadoGetMusica"></button>
+                    <button type="button" ng-click="parsearMusica()" ng-class="{'btn-warning': estadoGetMusica == 'Aguarde'}" ng-disabled="estadoGetMusica == 'Aguarde'" class="btn btn-primary" ng-bind="estadoGetMusica"></button>
                 </span>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4 musica-nome">
             <div class="input-group">
                 <span class="input-group-addon">
                     <span>Nome</span>
                 </span>
-                <input type="text" class="form-control" ng-model="musica.nome" placeholder="Nome da Música"/>
+                <input type="text" class="form-control input-lg" ng-model="musica.nome" placeholder="Nome da Música"/>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4 musica-cantor">
             <div class="input-group">
                 <span class="input-group-addon">
                     <span>Cantor</span>
                 </span>
-                <input type="text" class="form-control" ng-model="musica.cantor" placeholder="Cantor da Música"/>
+                <input type="text" class="form-control input-lg" ng-model="musica.cantor" placeholder="Cantor da Música"/>
+            </div>
+        </div>
+        <div class="col-md-4 musica-sequencia">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>Sequencia</span>
+                </span>
+                <input type="text" class="form-control input-lg" ng-model="musica.sequencia" placeholder="Sequência da Música"/>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">Música pronta</h4>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body musica-pronta">
                     <div class="estrofe-pronta animate-repeat" ng-repeat="estrofe in musica.estrofes | orderBy:indice track by $index">
                         <div ng-repeat="verso in estrofe.versos track by $index">
                             <p class="pre" ng-bind-html="trataHtml(verso.cifra)"></p>
@@ -53,7 +64,7 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">Compondo</h4>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body musica-compondo">
                     <div class="panel-group" id="listaEstrofes" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default animate-repeat" ng-repeat="estrofe in musica.estrofes | orderBy:indice track by $index">
                             <div class="panel-heading" role="tab" id="cabecalhoEstrofe{{estrofe.indice}}">
@@ -63,6 +74,9 @@
                                     </button>
                                     <button class="btn btn-primary" role="button" ng-click="adicionaVerso($index)">
                                         <i class="fa fa-plus"></i> Verso
+                                    </button>
+                                    <button class="btn btn-primary" role="button" ng-click="adicionaSequencia(estrofe.indice)">
+                                        <i class="fa fa-plus"></i> Sequência
                                     </button>
                                     <button type="button" class="close" ng-if="musica.estrofes.length > 1" ng-click="removeEstrofe($index)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <button type="button" class="close" ng-if="estrofe.indice > 1" ng-click="moveEstrofe(-1, $index)"><i class="fa fa-angle-double-up"></i></button>
@@ -87,26 +101,26 @@
                                 </div>
                             </div>
                             <div class="panel-footer" ng-show="$index == musica.estrofes.length - 1">
-                                <button class="btn btn-default" ng-click="adicionaEstrofe()">Adiciona Estrofe</button>
+                                <button class="btn btn-primary" ng-click="adicionaEstrofe()">Adiciona Estrofe</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">Música do Cifra Club</h4>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body letra-bruta">
                     <div class="alert alert-info" role="alert" ng-if="letra.length == 0">
                         Digite a URL da música no cifra clube na caixa acima e clique em Carregar para adicionar aqui a letra da música.
                     </div>
                     <div class="alert alert-danger" role="alert" ng-if="!conseguiuObterMusica">
                         Ocorreu um erro ao tentar ler a música <a href="{{ cifraUrl }}" target="_blank">{{ cifraUrl }}</a>. Por favor, tente acessar a url e verifica se a página tem a música corretamente.
                     </div>
-                    <div class="input-group linha-bruta animate-repeat pre" ng-repeat="linha in letra track by $index">
+                    <div class="input-group linha-bruta animate-repeat" ng-repeat="linha in letra track by $index">
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-double-left"></i></button>
                             <ul class="dropdown-menu">
@@ -114,7 +128,7 @@
                                 <li><a ng-click="defineVerso(linha, 'letra', $index)">Como Letra</a></li>
                             </ul>
                         </div>
-                        <p class="form-control" ng-bind-html="trataHtml(linha)" id="linhaCifra{{$index}}"></p>
+                        <p class="form-control linha-bruta pre" ng-bind-html="trataHtml(linha)" id="linhaCifra{{$index}}"></p>
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-default" ng-click="removeLinha($index)"><i class="fa fa-close"></i></button>
                         </div>

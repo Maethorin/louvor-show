@@ -25,7 +25,37 @@ class ParserMusica(Resource):
         resposta = requests.get(url)
         pagina = lhtml.fromstring(resposta.content)
         pre = pagina.cssselect('pre')
-        return lhtml.tostring(pre[0], encoding='UTF-8').replace('<pre>', '').replace('</pre>', '').split('\n')
+        nome = pagina.cssselect('.cifra .titulo')[0].text
+        cantor = pagina.cssselect('.cifra .subtitulo a')[0].text
+        return {
+            "nome": nome.strip(),
+            "cantor": cantor.strip(),
+            "letra": lhtml.tostring(pre[0], encoding='UTF-8').replace('<pre>', '').replace('</pre>', '').split('\n')
+        }
+
+
+class EditorMusica(Resource):
+    def get(self):
+        return {}
+
+    def post(self):
+        musica_dict = request.get_json()
+        cantor = models.Cantor.query.filter_by(nome=musica_dict['cantor']).first()
+        if not cantor:
+            cantor = models.Cantor(nome=musica_dict['cantor'])
+            models.db.session.add(cantor)
+        musica = models.Musica(
+            nome=musica_dict['nome'],
+            sequencia=musica_dict['sequencia'],
+            cantor=cantor
+        )
+        models.db.session.add(musica)
+        models.db.session.commit()
+        return {}
+
+    def put(self):
+        musica = request.get_json()
+        return {}
 
 
 class Musicas(Resource):

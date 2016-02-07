@@ -27,7 +27,7 @@ class Musica(db.Model):
         as_dict = {'id': self.id, 'nome': self.nome, 'cantor': self.cantor.nome}
         if not lista:
             as_dict['letra'] = {}
-            as_dict['sequencia'] = [int(numero) for numero in self.sequencia.split(', ')]
+            as_dict['sequencia'] = [int(numero) for numero in self.sequencia.split('-')]
             for estrofe in self.estrofes:
                 versos = []
                 for verso in estrofe.versos:

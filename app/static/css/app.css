@@ -33,7 +33,7 @@
 }
 
 .pre {
-    white-space: pre;
+    white-space: pre-wrap;
     font-family: Courier, monospace;
     font-weight: bold;
 }
@@ -131,4 +131,14 @@
 
 .estrofe-pronta p {
     margin-bottom: -9px;
+}
+
+.musica-pronta, .musica-compondo, .letra-bruta {
+    min-height: 640px;
+    max-height: 640px;
+    overflow: auto;
+}
+
+.musica-pronta .pre, .letra-bruta .pre {
+    font-size: 10px;
 }
