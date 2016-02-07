@@ -35,8 +35,11 @@
 .pre {
     white-space: pre;
     font-family: Courier, monospace;
-    font-size: 42px;
     font-weight: bold;
+}
+
+.exibindo-data-show {
+    font-size: 42px;
     line-height: 13px;
     margin-left: -500px;
 }
@@ -117,4 +120,15 @@
 
 .letra {
     background-color: #5cb85c;
+}
+
+.estrofe-pronta {
+    background-color: #DDD;
+    padding: 5px;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+
+.estrofe-pronta p {
+    margin-bottom: -9px;
 }

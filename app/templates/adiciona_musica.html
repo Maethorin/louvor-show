@@ -33,58 +33,92 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="panel-group" id="listaEstrofes" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default animate-repeat" ng-repeat="estrofe in musica.estrofes | orderBy:indice">
-                    <div class="panel-heading" role="tab" id="cabecalhoEstrofe{{estrofe.indice}}">
-                        <h4 class="panel-title">
-                            <button role="button" ng-click="defineEstrofeAtual($index)" data-toggle="collapse" data-parent="#listaEstrofes" data-target="#conteudoEstrofe{{estrofe.indice}}" aria-expanded="true" aria-controls="conteudoEstrofe{{estrofe.indice}}">
-                                <span>Estrofe</span> <span ng-bind="estrofe.indice"></span>
-                            </button>
-                            <button role="button" ng-click="adicionaVerso($index)">
-                                <span>+ Verso</span>
-                            </button>
-                            <button type="button" class="close" ng-if="musica.estrofes.length > 1" ng-click="removeEstrofe($index)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <button type="button" class="close" ng-if="estrofe.indice > 1" ng-click="moveEstrofe(-1, $index)"><i class="fa fa-angle-double-up"></i></button>
-                            <button type="button" class="close" ng-if="estrofe.indice < musica.estrofes.length" ng-click="moveEstrofe(1, $index)"><i class="fa fa-angle-double-down"></i></button>
-                        </h4>
-                    </div>
-                    <div id="conteudoEstrofe{{estrofe.indice}}" class="panel-collapse collapse" ng-class="{'in': $index == 0}" role="tabpanel" aria-labelledby="cabecalhoEstrofe{{estrofe.indice}}">
-                        <div class="panel-body">
-                            <div class="panel panel-default animate-repeat" ng-repeat="verso in estrofe.versos">
-                                <div class="panel-body">
-                                    <button type="button" class="close" ng-click="removeVerso($parent.$index, $index)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="verso{{$index + 1}}Estrofe{{estrofe.indice}}Cifra"><i class="fa fa-music"></i></span>
-                                        <input type="text" ng-model="verso.cifra" class="form-control" placeholder="Cifra" aria-describedby="verso{{$index + 1}}Estrofe{{estrofe.indice}}Cifra">
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="verso{{$index + 1}}Estrofe{{estrofe.indice}}Letra"><i class="fa fa-microphone"></i></span>
-                                        <input type="text" ng-model="verso.letra" class="form-control" placeholder="Letra" aria-describedby="verso{{$index + 1}}Estrofe{{estrofe.indice}}Letra">
-                                    </div>
-                                </div>
-                            </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Música pronta</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="estrofe-pronta animate-repeat" ng-repeat="estrofe in musica.estrofes | orderBy:indice track by $index">
+                        <div ng-repeat="verso in estrofe.versos track by $index">
+                            <p class="pre" ng-bind-html="trataHtml(verso.cifra)"></p>
+                            <p class="pre" ng-bind-html="trataHtml(verso.letra)"></p>
                         </div>
-                    </div>
-                    <div class="panel-footer" ng-show="$index == musica.estrofes.length - 1">
-                        <button class="btn btn-default" ng-click="adicionaEstrofe()">Adiciona Estrofe</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-
-            <div class="input-group linha-bruta animate-repeat" ng-repeat="linha in letra track by $index">
-                <div class="input-group-btn">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-double-left"></i></button>
-                    <ul class="dropdown-menu">
-                        <li><a ng-click="defineVerso(linha, 'cifra', $index)">Como Cifra</a></li>
-                        <li><a ng-click="defineVerso(linha, 'letra', $index)">Como Letra</a></li>
-                    </ul>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Compondo</h4>
                 </div>
-                <input type="text" class="form-control" value="{{linha}}" id="linhaCifra{{$index}}"/>
-                <div class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="removeLinha($index)"><i class="fa fa-close"></i></button>
+                <div class="panel-body">
+                    <div class="panel-group" id="listaEstrofes" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default animate-repeat" ng-repeat="estrofe in musica.estrofes | orderBy:indice track by $index">
+                            <div class="panel-heading" role="tab" id="cabecalhoEstrofe{{estrofe.indice}}">
+                                <h4 class="panel-title">
+                                    <button class="btn btn-primary" ng-class="{'active': estrofeAtual == $index}" role="button" ng-click="defineEstrofeAtual($index)" data-toggle="collapse" data-parent="#listaEstrofes" data-target="#conteudoEstrofe{{estrofe.indice}}" aria-expanded="true" aria-pressed="true" aria-controls="conteudoEstrofe{{estrofe.indice}}">
+                                        <span>Estrofe</span> <span ng-bind="estrofe.indice"></span>
+                                    </button>
+                                    <button class="btn btn-primary" role="button" ng-click="adicionaVerso($index)">
+                                        <i class="fa fa-plus"></i> Verso
+                                    </button>
+                                    <button type="button" class="close" ng-if="musica.estrofes.length > 1" ng-click="removeEstrofe($index)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <button type="button" class="close" ng-if="estrofe.indice > 1" ng-click="moveEstrofe(-1, $index)"><i class="fa fa-angle-double-up"></i></button>
+                                    <button type="button" class="close" ng-if="estrofe.indice < musica.estrofes.length" ng-click="moveEstrofe(1, $index)"><i class="fa fa-angle-double-down"></i></button>
+                                </h4>
+                            </div>
+                            <div id="conteudoEstrofe{{estrofe.indice}}" class="panel-collapse collapse" ng-class="{'in': $index == 0}" role="tabpanel" aria-labelledby="cabecalhoEstrofe{{estrofe.indice}}">
+                                <div class="panel-body">
+                                    <div class="panel panel-default animate-repeat" ng-repeat="verso in estrofe.versos track by $index">
+                                        <div class="panel-body">
+                                            <button type="button" class="close" ng-click="removeVerso($parent.$index, $index)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="verso{{$index + 1}}Estrofe{{estrofe.indice}}Cifra"><i class="fa fa-music"></i></span>
+                                                <input type="text" ng-trim="false" ng-model="verso.cifra" class="form-control" placeholder="Cifra" aria-describedby="verso{{$index + 1}}Estrofe{{estrofe.indice}}Cifra">
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="verso{{$index + 1}}Estrofe{{estrofe.indice}}Letra"><i class="fa fa-microphone"></i></span>
+                                                <input type="text" ng-trim="false" ng-model="verso.letra" class="form-control" placeholder="Letra" aria-describedby="verso{{$index + 1}}Estrofe{{estrofe.indice}}Letra">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer" ng-show="$index == musica.estrofes.length - 1">
+                                <button class="btn btn-default" ng-click="adicionaEstrofe()">Adiciona Estrofe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Música do Cifra Club</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="alert alert-info" role="alert" ng-if="letra.length == 0">
+                        Digite a URL da música no cifra clube na caixa acima e clique em Carregar para adicionar aqui a letra da música.
+                    </div>
+                    <div class="alert alert-danger" role="alert" ng-if="!conseguiuObterMusica">
+                        Ocorreu um erro ao tentar ler a música <a href="{{ cifraUrl }}" target="_blank">{{ cifraUrl }}</a>. Por favor, tente acessar a url e verifica se a página tem a música corretamente.
+                    </div>
+                    <div class="input-group linha-bruta animate-repeat pre" ng-repeat="linha in letra track by $index">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-double-left"></i></button>
+                            <ul class="dropdown-menu">
+                                <li><a ng-click="defineVerso(linha, 'cifra', $index)">Como Cifra</a></li>
+                                <li><a ng-click="defineVerso(linha, 'letra', $index)">Como Letra</a></li>
+                            </ul>
+                        </div>
+                        <p class="form-control" ng-bind-html="trataHtml(linha)" id="linhaCifra{{$index}}"></p>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="removeLinha($index)"><i class="fa fa-close"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

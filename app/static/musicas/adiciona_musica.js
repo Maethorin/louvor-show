@@ -60,8 +60,12 @@ angular.module('louvorShow.adicionaMusica',['ngRoute'])
             refazIndice();
         };
         $scope.defineEstrofeAtual = function(index) {
-            $scope.estrofeAtual = index;
-            console.log($scope.estrofeAtual);
+            if ($scope.estrofeAtual == index) {
+                $scope.estrofeAtual = -1;
+            }
+            else {
+                $scope.estrofeAtual = index;
+            }
         };
         $scope.adicionaVerso = function(estrofeIndex) {
             $scope.musica.estrofes[estrofeIndex].versos.push({"cifra": null, "letra": null});
@@ -70,6 +74,9 @@ angular.module('louvorShow.adicionaMusica',['ngRoute'])
             $scope.musica.estrofes[estrofeIndex].versos.splice(index, 1);
         };
         $scope.defineVerso = function(linha, tipo, index) {
+            if ($scope.estrofeAtual < 0) {
+                return false;
+            }
             var ultimoVerso = $scope.musica.estrofes[$scope.estrofeAtual].versos.length - 1;
             $scope.musica.estrofes[$scope.estrofeAtual].versos[ultimoVerso][tipo] = linha;
             $('#linhaCifra' + index).addClass(tipo);
