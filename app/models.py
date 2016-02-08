@@ -36,6 +36,7 @@ class Musica(db.Model):
     cantor_id = db.Column(db.Integer, db.ForeignKey('cantores.id'))
     cantor = relationship("Cantor", back_populates="musicas")
     sequencia = db.Column(db.String())
+    cifra_url = db.Column(db.String())
     estrofes = relationship("Estrofe", back_populates="musica", cascade="save-update, merge, delete")
 
     @classmethod
@@ -44,6 +45,7 @@ class Musica(db.Model):
         musica = cls(
             nome=musica_dict['nome'],
             sequencia=musica_dict['sequencia'],
+            cifra_url=musica_dict['cifraUrl'],
             cantor=cantor
         )
         db.session.add(musica)
@@ -61,6 +63,7 @@ class Musica(db.Model):
         db.session.commit()
         musica.nome = musica_dict['nome']
         musica.sequencia = musica_dict['sequencia']
+        musica.cifra_url = musica_dict['cifraUrl']
         musica.cantor = Cantor.cria_ou_obtem(nome=musica_dict['cantor'])
         for estrofe_dict in musica_dict['estrofes']:
             musica.adiciona_estrofe(estrofe_dict)
@@ -77,6 +80,7 @@ class Musica(db.Model):
         if not lista:
             as_dict['letra'] = {}
             as_dict['sequencia'] = [int(numero) for numero in self.sequencia.split('-')]
+            as_dict['cifraUrl'] = self.cifra_url
             for estrofe in self.estrofes:
                 versos = []
                 for verso in estrofe.versos:
@@ -93,6 +97,7 @@ class Musica(db.Model):
             'nome': self.nome,
             'cantor': self.cantor.nome,
             'sequencia': self.sequencia,
+            'cifraUrl': self.cifra_url,
             'estrofes': [estrofe.formato_editor() for estrofe in self.estrofes]
         }
 

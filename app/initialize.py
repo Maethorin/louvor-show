@@ -35,4 +35,4 @@ def favicon():
 
 
 def run():
-    web_app.run(debug=True)
+    web_app.run(host='0.0.0.0', port=8080, debug=True)

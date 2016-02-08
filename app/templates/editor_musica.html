@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="input-group">
-                <input type="text" class="form-control" ng-model="cifraUrl" placeholder="Url da música no Cifra Club"/>
+                <input type="text" class="form-control" ng-model="musica.cifraUrl" placeholder="Url da música no Cifra Club"/>
                 <span class="input-group-btn">
                     <button type="button" ng-click="parsearMusica()" ng-class="{'btn-warning': estadoGetMusica == 'Aguarde'}" ng-disabled="estadoGetMusica == 'Aguarde'" class="btn btn-primary" ng-bind="estadoGetMusica"></button>
                 </span>
@@ -118,7 +118,7 @@
                         Digite a URL da música no cifra clube na caixa acima e clique em Carregar para adicionar aqui a letra da música.
                     </div>
                     <div class="alert alert-danger" role="alert" ng-if="!conseguiuObterMusica">
-                        Ocorreu um erro ao tentar ler a música <a href="{{ cifraUrl }}" target="_blank">{{ cifraUrl }}</a>. Por favor, tente acessar a url e verifica se a página tem a música corretamente.
+                        Ocorreu um erro ao tentar ler a música <a href="{{ musica.cifraUrl }}" target="_blank">{{ musica.cifraUrl }}</a>. Por favor, tente acessar a url e verifica se a página tem a música corretamente.
                     </div>
                     <div class="input-group linha-bruta animate-repeat" ng-repeat="linha in letra track by $index">
                         <div class="input-group-btn">

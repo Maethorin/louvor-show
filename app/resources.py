@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import requests
 
 from flask import request
@@ -23,7 +22,8 @@ class ParserMusica(Resource):
         except:
             pass
         resposta = requests.get(url)
-        pagina = lhtml.fromstring(resposta.content)
+        parser = lhtml.HTMLParser(encoding='UTF-8')
+        pagina = lhtml.fromstring(resposta.content, parser=parser)
         pre = pagina.cssselect('pre')
         nome = pagina.cssselect('.cifra .titulo')[0].text
         cantor = pagina.cssselect('.cifra .subtitulo a')[0].text

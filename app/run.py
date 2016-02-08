@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import app
+import initialize
 
 if __name__ == '__main__':
-    app.run()
+    initialize.run()

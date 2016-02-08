@@ -23,6 +23,7 @@ angular.module('louvorShow.adicionaMusica', ['ngRoute'])
             $scope.musica = {
                 "id": null,
                 "nome": null,
+                "cifraUrl": null,
                 "cantor": null,
                 "sequencia": "1",
                 "estrofes": [
@@ -34,14 +35,13 @@ angular.module('louvorShow.adicionaMusica', ['ngRoute'])
         $scope.estrofeAtual = 0;
         $scope.estadoGetMusica = "Carregar";
         $scope.conseguiuObterMusica = true;
-        $scope.cifraUrl = 'http://www.cifraclub.com.br/davi-sacer/venha-o-teu-reino/';
         $scope.removeLinha = function(index) {
             $scope.letra.splice(index, 1);
         };
 
         $scope.parsearMusica = function() {
             $scope.estadoGetMusica = "Aguarde";
-            $http.put('/api/letra-musica', {'url': $scope.cifraUrl}).then(
+            $http.put('/api/letra-musica', {'url': $scope.musica.cifraUrl}).then(
                 function(response) {
                     $scope.musica.nome = response.data.nome;
                     $scope.musica.cantor = response.data.cantor;
