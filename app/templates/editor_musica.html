@@ -1,10 +1,19 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-9">
-            <h1>Montar música</h1>
+<div class="container-fluid editor-musica">
+    <div class="row cabecalho">
+        <div class="col-lg-3">
+            <div class="titulo">Montar música</div>
         </div>
-        <div class="col-md-3">
-            <button class="btn btn-success" ng-click="gravarMusica()">Gravar</button>
+        <div class="col-md-9">
+            <div class="col-md-10 feedback">
+                <div class="alert alert-danger" role="alert" ng-bind="erroGravacao" ng-show="erroAoGravar"></div>
+            </div>
+            <div class="col-md-1 feedback">
+                <i ng-show="sucessoAoGravar" class="gravado fa fa-check"></i>
+                <i ng-show="erroAoGravar" class="falhou fa fa-close"></i>
+            </div>
+            <div class="col-md-1 botoes" style="text-align: right;">
+                <button class="btn btn-success" ng-click="gravarMusica()">Gravar</button>
+            </div>
         </div>
     </div>
     <div class="row">

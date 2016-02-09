@@ -40,13 +40,13 @@ class EditorMusica(Resource):
 
     def post(self):
         musica_dict = request.get_json()
-        models.Musica.cria_musica(musica_dict)
-        return {'resultado': 'OK'}
+        musica = models.Musica.cria_musica(musica_dict)
+        return {'resultado': 'OK', "musica_id": musica.id}
 
     def put(self):
         musica_dict = request.get_json()
-        models.Musica.edita_musica(musica_dict)
-        return {'resultado': 'OK'}
+        musica = models.Musica.edita_musica(musica_dict)
+        return {'resultado': 'OK', 'musica': musica.formato_editor()}
 
 
 class Musicas(Resource):

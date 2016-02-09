@@ -61,6 +61,12 @@
     font-weight: bold;
 }
 
+.editor-musica .titulo {
+    font-size: 30px;
+    padding-top: 8px;
+    height: 58px;
+}
+
 .campo-parte {
     padding-top: 5px;
 }
@@ -141,4 +147,45 @@
 
 .musica-pronta .pre, .letra-bruta .pre {
     font-size: 10px;
+}
+
+.feedback i, .feedback .alert {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+}
+
+.feedback i {
+    font-size: 40px;
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.feedback .alert {
+    margin-top: 3px;
+    margin-bottom: 0;
+}
+
+.feedback i.ng-hide, .feedback .alert.ng-hide  {
+  opacity:0;
+}
+
+.gravado {
+    color: #5cb85c;
+}
+
+.falhou {
+    color: #954121;
+}
+
+.editor-musica .cabecalho {
+    background-color: #EEE;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    padding: 5px;
+    margin: -20px 0 10px 0;
+}
+
+.cabecalho .botoes {
+    padding-top: 12px;
 }

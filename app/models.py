@@ -52,6 +52,7 @@ class Musica(db.Model):
         for estrofe_dict in musica_dict['estrofes']:
             musica.adiciona_estrofe(estrofe_dict)
         db.session.commit()
+        return musica
 
     @classmethod
     def edita_musica(cls, musica_dict):
@@ -68,6 +69,7 @@ class Musica(db.Model):
         for estrofe_dict in musica_dict['estrofes']:
             musica.adiciona_estrofe(estrofe_dict)
         db.session.commit()
+        return musica
 
     def adiciona_estrofe(self, estrofe_dict):
         estrofe = Estrofe(indice=estrofe_dict['indice'], musica=self)

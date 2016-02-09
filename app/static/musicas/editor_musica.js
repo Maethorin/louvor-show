@@ -8,15 +8,19 @@ angular.module('louvorShow.adicionaMusica', ['ngRoute'])
                 controller: 'AdicionaMusicaController'
             });
     }])
-    .controller('AdicionaMusicaController', ['$scope', '$http', '$sce', '$routeParams', function($scope, $http, $sce, $routeParams) {
+    .controller('AdicionaMusicaController', ['$location', '$scope', '$http', '$sce', '$routeParams', '$timeout', function($location, $scope, $http, $sce, $routeParams, $timeout) {
         $scope.trataHtml = function(linha) {
             return $sce.trustAsHtml(linha);
         };
         var musicaId = $routeParams.musicaId;
         if (musicaId) {
             $http.get('/api/editor-musica/' + musicaId, {cache: false}).success(function(musica) {
+                if (musica.estrofes.length == 0) {
+                    musica.estrofes = [
+                        {"indice": 1, versos: [{"cifra": null, "letra": null}]}
+                    ]
+                }
                 $scope.musica = musica;
-                console.log(musica);
             });
         }
         else {
@@ -35,6 +39,8 @@ angular.module('louvorShow.adicionaMusica', ['ngRoute'])
         $scope.estrofeAtual = 0;
         $scope.estadoGetMusica = "Carregar";
         $scope.conseguiuObterMusica = true;
+        $scope.sucessoAoGravar = false;
+        $scope.erroAoGravar = false;
         $scope.removeLinha = function(index) {
             $scope.letra.splice(index, 1);
         };
@@ -60,10 +66,24 @@ angular.module('louvorShow.adicionaMusica', ['ngRoute'])
             var metodo = $scope.musica.id ? 'put' : 'post';
             $http[metodo]('/api/editor-musica', $scope.musica).then(
                 function(response) {
-                    alert("FOI");
+                    if (metodo == 'post') {
+                        $location.path('/editor-musica/' + response.data['musica_id'])
+                    }
+                    else {
+                        $scope.musica = response.data.musica;
+                        $scope.sucessoAoGravar = true;
+                        $scope.erroAoGravar = false;
+                        $timeout(function() {
+                            $scope.sucessoAoGravar = false;
+                        }, 2000)
+                    }
                 },
                 function(data) {
-                    alert("NADAADADADD");
+                    $scope.erroAoGravar = true;
+                    $scope.erroGravacao = 'Falhou!';
+                    $timeout(function() {
+                        $scope.erroAoGravar = false;
+                    }, 2000)
                 }
             );
         };
