@@ -39,14 +39,20 @@ class EditorMusica(Resource):
         return models.Musica.query.get(musica_id).formato_editor()
 
     def post(self):
-        musica_dict = request.get_json()
-        musica = models.Musica.cria_musica(musica_dict)
-        return {'resultado': 'OK', "musica_id": musica.id}
+        try:
+            musica_dict = request.get_jon()
+            musica = models.Musica.cria_musica(musica_dict)
+            return {'sucesso': True, "musica_id": musica.id}
+        except Exception as ex:
+            return {'sucesso': False, "mensagem": str(ex)}, 400
 
     def put(self):
-        musica_dict = request.get_json()
-        musica = models.Musica.edita_musica(musica_dict)
-        return {'resultado': 'OK', 'musica': musica.formato_editor()}
+        try:
+            musica_dict = request.get_son()
+            musica = models.Musica.edita_musica(musica_dict)
+            return {'sucesso': True, 'musica': musica.formato_editor()}
+        except Exception as ex:
+            return {'sucesso': False, "mensagem": str(ex)}, 400
 
 
 class Musicas(Resource):

@@ -5,7 +5,10 @@
         </div>
         <div class="col-md-9">
             <div class="col-md-10 feedback">
-                <div class="alert alert-danger" role="alert" ng-bind="erroGravacao" ng-show="erroAoGravar"></div>
+                <div class="alert alert-danger" role="alert" ng-show="exibeMsgErro">
+                    <button type="button" class="close" ng-click="exibeMsgErro = false"><span aria-hidden="true">&times;</span></button>
+                    <strong>ERRO: </strong><span ng-bind="erroGravacao"></span>
+                </div>
             </div>
             <div class="col-md-1 feedback">
                 <i ng-show="sucessoAoGravar" class="gravado fa fa-check"></i>

@@ -78,9 +78,10 @@ angular.module('louvorShow.adicionaMusica', ['ngRoute'])
                         }, 2000)
                     }
                 },
-                function(data) {
+                function(response) {
+                    $scope.erroGravacao = response.data.mensagem;
                     $scope.erroAoGravar = true;
-                    $scope.erroGravacao = 'Falhou!';
+                    $scope.exibeMsgErro = true;
                     $timeout(function() {
                         $scope.erroAoGravar = false;
                     }, 2000)

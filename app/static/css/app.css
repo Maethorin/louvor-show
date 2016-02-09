@@ -150,15 +150,15 @@
 }
 
 .feedback i, .feedback .alert {
-    -webkit-transition:all linear 0.5s;
-    transition:all linear 0.5s;
+    -webkit-transition:all linear 0.3s;
+    transition:all linear 0.3s;
 }
 
 .feedback i {
     font-size: 40px;
     display: inline-block;
     margin-left: 30px;
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 .feedback .alert {
