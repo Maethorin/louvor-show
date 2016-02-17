@@ -19,42 +19,49 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="input-group">
-                <input type="text" class="form-control" ng-model="musica.cifraUrl" placeholder="Url da música no Cifra Club"/>
-                <span class="input-group-btn">
-                    <button type="button" ng-click="parsearMusica()" ng-class="{'btn-warning': estadoGetMusica == 'Aguarde'}" ng-disabled="estadoGetMusica == 'Aguarde'" class="btn btn-primary" ng-bind="estadoGetMusica"></button>
-                </span>
+    <form name="formMusica">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group has-feedback form-cifra" ng-class="{'has-success': campoEstaValido(formMusica.cifraUrl), 'has-error': campoEstaInvalido(formMusica.cifraUrl)}">
+                    <label class="control-label" for="inputCifraUrl">URL da cifra</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputCifraUrl" name="cifraUrl" ng-model="musica.cifraUrl" placeholder="Url da música no Cifra Club" aria-describedby="helpCifraUrl" required />
+                        <span class="input-group-btn">
+                            <button type="button" ng-click="parsearMusica()" ng-class="{'btn-warning': estadoGetMusica == 'Aguarde'}" ng-disabled="estadoGetMusica == 'Aguarde'" class="btn btn-primary" ng-bind="estadoGetMusica"></button>
+                        </span>
+                    </div>
+                    <span class="fa form-control-feedback" aria-hidden="true" ng-class="{'fa-asterisk': !formMusica.cifraUrl.$touched, 'fa-check': campoEstaValido(formMusica.cifraUrl), 'fa-close': campoEstaInvalido(formMusica.cifraUrl)}"></span>
+                    <span id="helpCifraUrl" class="help-block" ng-show="formMusica.cifraUrl.$touched && formMusica.cifraUrl.$error.required">A URL da cifra é obrigatória</span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 musica-nome">
-            <div class="input-group">
+        <div class="row">
+            <div class="col-md-4 musica-nome">
+                <div class="input-group">
                 <span class="input-group-addon">
                     <span>Nome</span>
                 </span>
-                <input type="text" class="form-control input-lg" ng-model="musica.nome" placeholder="Nome da Música"/>
+                    <input type="text" class="form-control input-lg" ng-model="musica.nome" placeholder="Nome da Música"/>
+                </div>
             </div>
-        </div>
-        <div class="col-md-4 musica-cantor">
-            <div class="input-group">
+            <div class="col-md-4 musica-cantor">
+                <div class="input-group">
                 <span class="input-group-addon">
                     <span>Cantor</span>
                 </span>
-                <input type="text" class="form-control input-lg" ng-model="musica.cantor" placeholder="Cantor da Música"/>
+                    <input type="text" class="form-control input-lg" ng-model="musica.cantor" placeholder="Cantor da Música"/>
+                </div>
             </div>
-        </div>
-        <div class="col-md-4 musica-sequencia">
-            <div class="input-group">
+            <div class="col-md-4 musica-sequencia">
+                <div class="input-group">
                 <span class="input-group-addon">
                     <span>Sequencia</span>
                 </span>
-                <input type="text" class="form-control input-lg" ng-model="musica.sequencia" placeholder="Sequência da Música"/>
+                    <input type="text" class="form-control input-lg" ng-model="musica.sequencia" placeholder="Sequência da Música"/>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
     <div class="row">
         <div class="col-md-3">
             <div class="panel panel-default">
@@ -65,6 +72,7 @@
                     <div class="estrofe-pronta animate-repeat" ng-repeat="estrofe in musica.estrofes | orderBy:indice track by $index">
                         <div ng-repeat="verso in estrofe.versos track by $index">
                             <p class="pre" ng-bind-html="trataHtml(verso.cifra)"></p>
+
                             <p class="pre" ng-bind-html="trataHtml(verso.letra)"></p>
                         </div>
                     </div>
@@ -141,6 +149,7 @@
                             </ul>
                         </div>
                         <p class="form-control linha-bruta pre" ng-bind-html="trataHtml(linha)" id="linhaCifra{{$index}}"></p>
+
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-default" ng-click="removeLinha($index)"><i class="fa fa-close"></i></button>
                         </div>

@@ -189,3 +189,7 @@
 .cabecalho .botoes {
     padding-top: 12px;
 }
+
+.form-cifra .form-control-feedback {
+    right: 80px;
+}

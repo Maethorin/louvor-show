@@ -36,7 +36,7 @@ angular.module('louvorShow.adicionaMusica', ['ngRoute'])
             };
         }
         $scope.letra = [];
-        $scope.estrofeAtual = 0;
+        $scope.estrofeAtual = 0;formMusica.cifraUrl.$touched && !formMusica.cifraUrl.$error.required
         $scope.estadoGetMusica = "Carregar";
         $scope.conseguiuObterMusica = true;
         $scope.sucessoAoGravar = false;
@@ -130,5 +130,11 @@ angular.module('louvorShow.adicionaMusica', ['ngRoute'])
             var ultimoVerso = $scope.musica.estrofes[$scope.estrofeAtual].versos.length - 1;
             $scope.musica.estrofes[$scope.estrofeAtual].versos[ultimoVerso][tipo] = linha;
             $('#linhaCifra' + index).addClass(tipo);
+        };
+        $scope.campoEstaValido = function(campo) {
+            return campo.$touched && !campo.$error.required
+        };
+        $scope.campoEstaInvalido = function(campo) {
+            return campo.$touched && campo.$error.required
         };
     }]);
